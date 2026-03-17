@@ -11,9 +11,7 @@ def process_data(matrix):
     swapped_matrix[[row_min, row_max]] = swapped_matrix[[row_max, row_min]]
 
     reshaped_matrix = swapped_matrix.reshape(6, 2)
-    
     first_three_rows = reshaped_matrix[:3]
-    
     final_matrix = reshaped_matrix[:-1]
 
     return row_min, row_max, swapped_matrix, reshaped_matrix, first_three_rows, final_matrix
@@ -21,21 +19,28 @@ def process_data(matrix):
 def print_results(matrix, row_min, row_max, swapped_matrix, reshaped_matrix, first_three_rows, final_matrix):
     print("Початкова матриця 3x4:")
     print(matrix)
-    print(f"\nРядок з мінімальним елементом: {row_min}")
-    print(f"Рядок з максимальним елементом: {row_max}")
+
+    print(f"\nМінімальний елемент: {matrix.min()}")
+    print(f"Максимальний елемент: {matrix.max()}")
+    print(f"Рядок з мінімальним елементом: {row_min + 1}")
+    print(f"Рядок з максимальним елементом: {row_max + 1}")
+
     print("\nМатриця після обміну рядків:")
     print(swapped_matrix)
-    print("\nМатриця 6x2:")
+
+    print("\nМатриця після зміни розмірності на 6x2:")
     print(reshaped_matrix)
+
     print("\nПерші три рядки масиву 6x2:")
     print(first_three_rows)
-    print("\nМатриця після вилучення останнього рядка:")
+
+    print("\nМасив після вилучення останнього рядка:")
     print(final_matrix)
 
 def main():
     matrix = generate_data()
-    row_min, row_max, swapped, reshaped, first_three, final = process_data(matrix)
-    print_results(matrix, row_min, row_max, swapped, reshaped, first_three, final)
+    row_min, row_max, swapped_matrix, reshaped_matrix, first_three_rows, final_matrix = process_data(matrix)
+    print_results(matrix, row_min, row_max, swapped_matrix, reshaped_matrix, first_three_rows, final_matrix)
 
 if __name__ == "__main__":
     main()
